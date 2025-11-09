@@ -10,6 +10,8 @@ public class HeadRotation : MonoBehaviour
     private Vector2 lookVector;
     private Vector2 moveVector;
 
+    public GameObject prefab;
+
     public GameObject neck;
     private float movespeed = 8.0f;
     private float jumpforce = 400f;
@@ -36,7 +38,12 @@ public class HeadRotation : MonoBehaviour
         lookVector = playerInput.actions["Look"].ReadValue<Vector2>();
         moveVector = playerInput.actions["Move"].ReadValue<Vector2>();
 
-        neck.transform.rotation = Quaternion.Euler(0, euler_angle(-lookVector.x, lookVector.y), 0);
+        if ((lookVector.x != 0f) || (lookVector.y != 0f))
+        {
+            neck.transform.rotation = Quaternion.Euler(0, euler_angle(-lookVector.x, lookVector.y), 0);
+        }
+
+        
         transform.position += new Vector3(moveVector.x * Time.deltaTime * movespeed, 0, moveVector.y * Time.deltaTime * movespeed);
 
 
@@ -67,6 +74,7 @@ public class HeadRotation : MonoBehaviour
             Vector3 Impulse = new Vector3(moveVector.x, 0, moveVector.y);
             RB.AddForce(Impulse * dashdorce, ForceMode.Impulse);
             canDash = false;
+            Instantiate(prefab, this.transform.position, Quaternion.identity);
             StartCoroutine(DashCoolDown());
         }
     }
@@ -90,7 +98,7 @@ public class HeadRotation : MonoBehaviour
 
     IEnumerator JumpCoolDown()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         canJump = true;
     }
 }

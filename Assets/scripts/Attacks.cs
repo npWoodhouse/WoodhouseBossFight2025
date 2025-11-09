@@ -8,6 +8,10 @@ public class Attacks : MonoBehaviour
 
     public GameObject SlashBox;
 
+    [SerializeField] private GameObject bullet, bulletlaunchpos;
+    private bool isShooting = false;
+    private GameObject gamecontroller;
+
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -16,7 +20,7 @@ public class Attacks : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        gamecontroller = GameObject.Find("GameController");
     }
 
     // Update is called once per frame
@@ -26,6 +30,8 @@ public class Attacks : MonoBehaviour
         {
             slash();
         }
+
+        if (!isShooting && playerInput.actions["shoot"].triggered){shootgun();}
     }
 
     void slash()
@@ -38,5 +44,24 @@ public class Attacks : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         SlashBox.SetActive(false);
+    }
+
+    void shootgun()
+    {
+        isShooting = true;
+
+        bullet = gamecontroller.GetComponent<BulletPool>().GetBulletFromPool();
+        
+        bullet.transform.position = bulletlaunchpos.transform.position;
+        bullet.transform.rotation = bulletlaunchpos.transform.rotation;
+
+        bullet.GetComponent<Rigidbody>().AddForce(bulletlaunchpos.transform.up * 500, ForceMode.Impulse);
+        StartCoroutine(ShootingCooldown());
+    }
+
+    IEnumerator ShootingCooldown()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isShooting = false;
     }
 }
