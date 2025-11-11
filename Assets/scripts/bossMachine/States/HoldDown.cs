@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DOWN : BossState
+public class HoldDown : BossState
 {
     public override void Act()
     {return;}
@@ -12,7 +12,7 @@ public class DOWN : BossState
 
     public override void state_Update()
     {
-        if (bsc.transform.position.y > 1)
+        if (bsc.transform.position.y > 0)
         {
             bsc.transform.position -= new Vector3(0,bsc.speed * Time.deltaTime,0);
         }

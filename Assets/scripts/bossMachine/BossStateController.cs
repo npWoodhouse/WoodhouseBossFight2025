@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 public class BossStateController : MonoBehaviour
 {
-    public GameObject Body, lazer1;
+    public GameObject lazer1, body;
+    public BOSS_Health hp;
     public BossState starting_state;
     public BossState current_state;
     public BossState UpNext;
@@ -13,18 +14,25 @@ public class BossStateController : MonoBehaviour
     public bool actioncomplete = true;
 
     public float speed = 2.0f;
+    public float startROT;
     
     [Header("States")]
-    public BossState UP;
-    public BossState Down;
+    public BossState LazerUP;
+    public BossState LazerDown;
+    public BossState HoldUP;
+    public BossState HoldDown;
     public BossState hold;
-    public BossState laserfan;
+    public BossState lazerfan;
+    public BossState lazerfanBack;
+    public BossState lazerSweep;
+    public BossState lazerSweepBack;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         change_state(starting_state);
+        hp = body.GetComponent<BOSS_Health>();
     }
 
     void Update()
@@ -32,7 +40,8 @@ public class BossStateController : MonoBehaviour
         if (current_state != null)
         {
             current_state.state_Update();
-        } 
+        }
+        speed = hp.phase * 2f;
     }
 
     public virtual void change_state(BossState newstate)
@@ -52,36 +61,7 @@ public class BossStateController : MonoBehaviour
 
     public void RandomCorner()
     {
-        float roll = Random.Range(0f, 100f);
-        if (roll <= 25)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }else if (roll > 25 && roll <= 50)
-        {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
-        }else if (roll > 50 && roll <= 75)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }else if (roll > 75)
-        {
-            transform.rotation = Quaternion.Euler(0, 270, 0);
-        }
-    }
-
-    public void RandomAction()
-    {
-        float roll = Random.Range(0f, 100f);
-        if ( roll >= 20)
-        {
-            RandomCorner();
-            Down.TargetPos = new Vector3(14,10,14);
-            Down.nextAction = laserfan;
-            change_state(Down);
-        }else if (roll < 20)
-        {
-            Down.TargetPos = new Vector3(0,10,0);
-            Down.nextAction = hold;
-            change_state(Down);
-        }  
+        transform.position = new Vector3(-14,10,14);
+        transform.eulerAngles += new Vector3(0, 0, 0);
     }
 }

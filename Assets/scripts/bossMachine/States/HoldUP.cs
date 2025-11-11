@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UP : BossState
+public class HoldUP : BossState
 {
     public override void Act()
     {return;}
@@ -13,12 +13,7 @@ public class UP : BossState
         }
         else
         {
-            float roll = Random.Range(0f, 100f);
-            if ( roll >= 20)
-            {
-            }else if (roll < 20)
-            {
-            }  
+            bsc.change_state(bsc.LazerDown);  
         }
     }
 }

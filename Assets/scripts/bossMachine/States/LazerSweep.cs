@@ -1,7 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections;
 
-public class LaserArch : BossState
+public class LazerSweep : BossState
 {
     private float dalerp;
     public override void Act()
@@ -10,15 +10,15 @@ public class LaserArch : BossState
     public override void enter()
     {
         bsc.lazer1.SetActive(true);
-        dalerp = 0f;       
+        dalerp = 0f;         
     }
 
     public override void state_Update()
     {
-        dalerp += Time.deltaTime * bsc.speed * 10f;
-        if (dalerp <= 90f)
+        dalerp += Time.deltaTime * bsc.speed * 3f;
+        if (dalerp <= 28f)
         {
-            bsc.transform.eulerAngles += new Vector3(0, Time.deltaTime * bsc.speed * 10f, 0);
+            bsc.transform.Translate(Vector3.right * bsc.speed * Time.deltaTime * 3f);
         }
         else
         {
@@ -36,11 +36,11 @@ public class LaserArch : BossState
         float roll = Random.Range(0f, 100f);
         if (roll <= 50)
         {
-            bsc.change_state(bsc.lazerSweep);
+            bsc.change_state(bsc.lazerfan);
         }
         else if (roll > 50 && roll <= 80)
         {
-            bsc.change_state(bsc.lazerfanBack);
+            bsc.change_state(bsc.lazerSweepBack);
         }
     }
 }

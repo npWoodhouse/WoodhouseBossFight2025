@@ -3,11 +3,7 @@ using System.Collections;
 
 public abstract class BossState : MonoBehaviour
 {
-    protected BossStateController bsc;
-
-    public BossState nextAction;
-    public Vector3 TargetPos;
-    
+    protected BossStateController bsc;    
     protected virtual void Awake()
     {
         bsc = GetComponent<BossStateController>();

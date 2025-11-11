@@ -15,6 +15,6 @@ public class Hold : BossState
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(Random.Range(1.0f, 5.0f));
-        bsc.change_state(bsc.UP);
+        bsc.change_state(bsc.HoldUP);
     }
 }
