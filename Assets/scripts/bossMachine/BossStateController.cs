@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class BossStateController : MonoBehaviour
 {
-    public GameObject lazer1, body;
+    public GameObject lazer1;
     public BOSS_Health hp;
     public BossState starting_state;
     public BossState current_state;
@@ -32,7 +32,7 @@ public class BossStateController : MonoBehaviour
     void Start()
     {
         change_state(starting_state);
-        hp = body.GetComponent<BOSS_Health>();
+        hp = GetComponent<BOSS_Health>();
     }
 
     void Update()

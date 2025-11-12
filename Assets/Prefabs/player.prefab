@@ -98,10 +98,10 @@ GameObject:
   - component: {fileID: 5900939296495500031}
   - component: {fileID: 1163399271393655358}
   - component: {fileID: 6666095707613279703}
-  - component: {fileID: 8817100558630402881}
   - component: {fileID: 8326594770784073592}
-  - component: {fileID: 3206377115352054062}
   - component: {fileID: 4512138858072274706}
+  - component: {fileID: 8817100558630402881}
+  - component: {fileID: 3206377115352054062}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -209,21 +209,6 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &8817100558630402881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3183455470032264472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 448bfcbd71fb36d4782beef0250efefe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RB: {fileID: 0}
-  prefab: {fileID: 8048131554659232748, guid: 70133e19a9e79204f9dd34468ec09064, type: 3}
-  neck: {fileID: 5583859932381843428}
 --- !u!136 &8326594770784073592
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -247,21 +232,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &3206377115352054062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3183455470032264472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c14c04f3f76c5642adf845566577ee2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SlashBox: {fileID: 5530266547125955010}
-  bullet: {fileID: 0}
-  bulletlaunchpos: {fileID: 8890589541732072594}
 --- !u!54 &4512138858072274706
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -270,7 +240,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3183455470032264472}
   serializedVersion: 4
-  m_Mass: 100
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -289,6 +259,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8817100558630402881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3183455470032264472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448bfcbd71fb36d4782beef0250efefe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RB: {fileID: 0}
+  prefab: {fileID: 8048131554659232748, guid: 70133e19a9e79204f9dd34468ec09064, type: 3}
+  neck: {fileID: 5583859932381843428}
+--- !u!114 &3206377115352054062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3183455470032264472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c14c04f3f76c5642adf845566577ee2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlashBox: {fileID: 5530266547125955010}
+  bullet: {fileID: 0}
+  bulletlaunchpos: {fileID: 8890589541732072594}
 --- !u!1 &5530266547125955010
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6e29d3edda7de45baec1482173523b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slashDamage: 5
+  slashDamage: 15
 --- !u!1 &5583859932381843428
 GameObject:
   m_ObjectHideFlags: 0
