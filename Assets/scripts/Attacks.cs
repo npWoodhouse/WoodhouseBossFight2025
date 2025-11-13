@@ -36,14 +36,8 @@ public class Attacks : MonoBehaviour
 
     void slash()
     {
-        SlashBox.SetActive(true);
-        StartCoroutine(SlashOff());
-    }
+        Instantiate(SlashBox, bulletlaunchpos.transform.position, Quaternion.identity);
 
-    IEnumerator SlashOff()
-    {
-        yield return new WaitForSeconds(0.1f);
-        SlashBox.SetActive(false);
     }
 
     void shootgun()

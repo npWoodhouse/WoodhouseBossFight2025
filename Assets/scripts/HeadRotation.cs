@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class HeadRotation : MonoBehaviour
 {
     private PlayerInput playerInput;
+    public GameManager gm;
     public Rigidbody RB;
     private Vector2 lookVector;
     private Vector2 moveVector;
@@ -100,5 +101,15 @@ public class HeadRotation : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         canJump = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "LAZER")
+        {
+            Debug.Log("playerdead");
+            gm.killPlayer();
+            return;
+        }
     }
 }

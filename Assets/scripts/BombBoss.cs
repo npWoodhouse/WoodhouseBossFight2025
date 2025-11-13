@@ -16,6 +16,6 @@ public class BombBoss : MonoBehaviour
     void Update()
     {
         blast.transform.localScale += new Vector3(Time.deltaTime * scaler, Time.deltaTime * scaler, Time.deltaTime * scaler);
-        health.currentHealth -= Time.deltaTime * scaler;
+        health.currentHealth -= Time.deltaTime * scaler / 2.75f;
     }
 }
